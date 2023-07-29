@@ -1,0 +1,33 @@
+
+  
+  .home-main h2 {
+   
+    text-align: left;
+  }
+  
+  .home-main .categories-container {
+   margin-top: 4rem;
+    display: flex;
+    /* justify-content: space-evenly; */
+    gap: 1.2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+    
+  }
+  
+  .categories-container .category-card {
+    cursor: pointer;
+  }
+  
+  .categories-container .category-card img {
+    width: 250px;
+    object-fit: cover;
+  }
+  
+  .categories-container .category-card h4 {
+    /* margin: 10px 0; */
+    margin-top: 0;
+    text-align: left;
+    font-size: 20px;
+  }

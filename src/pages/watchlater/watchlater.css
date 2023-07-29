@@ -1,0 +1,19 @@
+/* .watch-later-main {
+    width: calc(100% - 16% - 20px);
+    padding: 10px 0;
+    position: relative;
+    left: 15%;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+   */
+  .watch-later-main h2 {
+    text-align: left;
+  }
+  .watch-later-main .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }

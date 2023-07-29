@@ -1,0 +1,37 @@
+
+  .card {
+    width: 300px;
+    height: 280px;
+    position: relative;
+    cursor: pointer;
+    text-align: left;
+  }
+  .card img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .card i {
+    color: var(--primary-color);
+    background-color: white;
+    padding: 5px;
+    position: absolute;
+    right: 0px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+}
+  .card .video-card-content {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.card .video-card-content img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+}
+
+.card .video-card-content div {
+    display: flex;
+    flex-direction: column;
+}
