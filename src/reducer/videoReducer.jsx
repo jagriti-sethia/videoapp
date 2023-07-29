@@ -18,7 +18,7 @@ export const videoReducer = (state, { type, payload }) => {
       case "ADD_NOTE": 
         return {
             ...state,
-            notes: [...state.notes, payload]
+            notes: [...state?.notes, payload]
         };
         case "ADD_PLAYLIST":
           return { ...state, playlists: [payload, ...state?.playlists] };

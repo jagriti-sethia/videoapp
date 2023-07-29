@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import "./singlevideo.css";
+
 import { useParams,useNavigate } from "react-router-dom";
 import VideoCard from '../../components/videocard/card';
 import { VideoContext } from "../../context/videoContext";
@@ -7,11 +8,17 @@ import Note from "../../components/notemodal/note";
 
 
 const SingleVideo = () => {
+  
     const { ID } = useParams();
     const navigate = useNavigate();
 
     const { videoState, videoDispatch, isInWatchLater,setisadd, isadd } =
         useContext(VideoContext);
+        const [notes, setNotes] = useState([]);
+        const handleAddNote = (newNote) => {
+          setNotes([...notes, newNote]);
+        };
+      
 
     const selectedVideo = videoState?.videoData?.find(
         ({ _id }) => _id === Number(ID)
@@ -71,6 +78,8 @@ const SingleVideo = () => {
             <hr />
             <div className="my-notes-container">
               <h3>My Notes</h3>
+              <p>{videoState?.notes}</p>
+             
             </div>
           </div>
           <div className="more-videos-container">
