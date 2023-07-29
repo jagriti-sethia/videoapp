@@ -3,13 +3,14 @@ import "./singlevideo.css";
 import { useParams,useNavigate } from "react-router-dom";
 import VideoCard from '../../components/videocard/card';
 import { VideoContext } from "../../context/videoContext";
+import Note from "../../components/notemodal/note";
 
 
 const SingleVideo = () => {
     const { ID } = useParams();
     const navigate = useNavigate();
 
-    const { videoState, videoDispatch, isInWatchLater } =
+    const { videoState, videoDispatch, isInWatchLater,setisadd, isadd } =
         useContext(VideoContext);
 
     const selectedVideo = videoState?.videoData?.find(
@@ -63,7 +64,8 @@ const SingleVideo = () => {
                   className="fa-solid fa-square-plus"
                   title="add to playlist"
                 ></i>
-                <i className="fa-solid fa-square-pen" title="add notes"></i>
+                <i className="fa-solid fa-square-pen" title="add notes"  onClick={() => setisadd(true)}></i>
+                {isadd && (<Note/>)}
               </div>
             </div>
             <hr />
