@@ -11,7 +11,8 @@ const Playlists = () => {
   const [addModal, setAddModal] = useState({ show: false, type: "" });
 
   return (
-<div>
+    <div className="playlists">
+      
       <div className="playlists-main">
         <h2>Playlists</h2>
         <div className="playlist-container">
@@ -34,7 +35,7 @@ const Playlists = () => {
       {addModal.show && (
         <AddModal addModal={addModal} setAddModal={setAddModal} />
       )}
-   </div>
+    </div>
   );
 };
 

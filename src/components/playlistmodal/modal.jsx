@@ -1,18 +1,30 @@
 import React, { useContext, useState } from "react";
 import "./modal.css";
 import { VideoContext } from "../../context/videoContext";
+import { toast } from "react-toastify";
 
-const AddModal = ({ addModal, setAddModal }) => {
+const AddModal = ({ addModal, setAddModal, fromSingleVideo, video }) => {
   const [playlistData, setPlaylistData] = useState({
     name: "",
     description: "",
     src: "https://source.unsplash.com/random/800x800/?playlist",
   });
 
-  const { videoDispatch } = useContext(VideoContext);
+  const { videoDispatch, videoState } = useContext(VideoContext);
 
-  const addHandler = () => {
-    videoDispatch({ type: "ADD_PLAYLIST", payload: playlistData });
+  const addHandler = (e) => {
+    e.preventDefault();
+    if (
+      videoState?.playlists?.some(
+        (playlist) =>
+          playlist?.name?.toLowerCase().trim() !== playlistData?.name?.toLowerCase().trim()
+      )
+    ) {
+      videoDispatch({ type: "ADD_PLAYLIST", payload: playlistData });
+      toast.success("Playlist is created");
+    } else {
+      toast.error("This playlist is already exists!");
+    }
     setAddModal({ ...addModal, show: false });
   };
 
@@ -26,7 +38,7 @@ const AddModal = ({ addModal, setAddModal }) => {
             onClick={() => setAddModal((prev) => ({ ...prev, show: false }))}
           ></i>
         </div>
-        <div className="modal-content">
+        <form className="modal-content" onSubmit={addHandler}>
           <input
             type="text"
             placeholder="Enter title of your playlist"
@@ -34,6 +46,7 @@ const AddModal = ({ addModal, setAddModal }) => {
             onChange={(e) =>
               setPlaylistData({ ...playlistData, name: e.target.value })
             }
+            required
           />
           <textarea
             type="text"
@@ -43,9 +56,47 @@ const AddModal = ({ addModal, setAddModal }) => {
             onChange={(e) =>
               setPlaylistData({ ...playlistData, description: e.target.value })
             }
+            required
           ></textarea>
-          <button onClick={addHandler}>Create new Playlist</button>
-        </div>
+          <button type="submit">Create new Playlist</button>
+        </form>
+        {fromSingleVideo && (
+          <div className="playlist-list">
+            {videoState?.playlists?.map((playlist) => (
+              <div key={playlist?.name} className="playlist-item">
+                <p
+                  onClick={() => {
+                    if (
+                      playlist?.videos?.some(({ _id }) => _id === video?._id)
+                    ) {
+                      toast.error("This video is already exists in the playlist!");
+                    } else {
+                      videoDispatch({
+                        type: "ADD_VIDEO_TO_PLAYLIST",
+                        payload: { video: video, playlistName: playlist?.name },
+                      });
+                      toast.success("Video is added to playlist");
+                    }
+                    setAddModal({ ...addModal, show: false });
+                  }}
+                >
+                  {playlist?.name}
+                </p>
+                <i
+                  className="fa-solid fa-circle-xmark"
+                  title="delete playlist"
+                  onClick={() => {
+                    videoDispatch({
+                      type: "DELETE_PLAYLIST",
+                      payload: playlist?.name,
+                    });
+                    toast.warn("Playlist is deleted");
+                  }}
+                ></i>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

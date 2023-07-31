@@ -1,71 +1,95 @@
 .add-modal-container {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-    inset: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .add-modal {
-    background-color: white;
-    margin: 0;
-    max-width: 24rem;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 20px;
-    border: 1px solid grey;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .add-modal h3 {
-    margin: 0;
-  }
-  
-  .add-modal .add-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-  }
-  
-  .add-modal .add-modal-header .fa-xmark {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .add-modal .modal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .modal-content input {
-    padding: 10px 0;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-  }
-  
-  .modal-content textarea {
-      resize: none;
-      outline: none;
-      border: none;
-  }
-  
-  .modal-content button {
-    color: white;
-    background-color: blue;
-    margin-right: 1rem;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    margin: 1rem auto;
-    cursor: pointer;
-    width: 100%;
-  }
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  inset: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-modal {
+  background-color: white;
+  margin: 0;
+  max-width: 24rem;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-modal h3 {
+  margin: 0;
+}
+
+.add-modal .add-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.add-modal .add-modal-header .fa-xmark {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.add-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-content input {
+  padding: 10px 0;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.modal-content textarea {
+  resize: none;
+  outline: none;
+  border: none;
+}
+
+.modal-content button {
+  color: white;
+  background-color: blue;
+  margin-right: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  margin: 1rem auto;
+  cursor: pointer;
+  width: 100%;
+}
+
+.playlist-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-list .playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 20px);
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.playlist-list .playlist-item p{
+  cursor: pointer;
+}
+
+.playlist-list .playlist-item i {
+  cursor: pointer;
+}
